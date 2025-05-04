@@ -52,6 +52,7 @@
   --deep_bg: #111111;
   --nav_bg: #111111;
   --light_bg: #1e1d1d;
+  --bg_variant: #1b1b1b;
   --default_btn: #6c63ff;
   --danger_btn: #f75842;
   --danger_variant_btn: #f36a58;
@@ -158,7 +159,7 @@ nav {
     background-color: var(--nav_bg);
     display: flex;
     justify-content: space-between;
-    padding: 0.2rem 20rem;
+    padding: 0.2rem 25rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -264,9 +265,6 @@ nav {
     gap: .5rem;
   }
 
-  #login {
-    display: none;
-  }
 
   #logout {
     background-color: var(--danger_btn);
@@ -307,10 +305,14 @@ body {
 
 /* Main Section Styles */
 main {
-  margin: 3rem 20rem;
+  margin: 4rem 25rem;
   padding: 0.2rem 0;
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
 }
-
 
 
 
@@ -387,7 +389,7 @@ main {
 /* Profile Section Styles */
 .user_section {
   padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   border-bottom: .1px solid var(--text_color);
 }
 
@@ -399,8 +401,8 @@ main {
 }
 
 .user_picture {
-  width: 17rem;
-  height: 17rem;
+  width: 17rem !important;
+  height: 16.5rem;
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -412,7 +414,8 @@ main {
 }
 
 .user_picture:hover {
-  border: .1px solid var(--light_bg);
+  border: 1px solid var(--color_warning);
+  box-shadow: var(--box_shadow);
 }
 
 .user_picture img {
@@ -423,6 +426,7 @@ main {
 .user_info {
   display: grid;
   gap: .5rem;
+  width: 30rem;
 }
 
 .name {
@@ -506,63 +510,6 @@ main {
 
 
 
-
-
-.tag_section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-
-.tag-list {
-  width: 50rem;
-  max-width: 90vw;
-  display: flex;
-  flex-shrink: 0;
-  flex-direction: column;
-  gap: .3rem 0;
-  position: relative;
-  padding: .5rem 0;
-  overflow: hidden;
-}
-
-.loop-slider {
-  .inner {
-    display: flex;
-    animation-name: loop;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: var(--direction);
-    animation-duration: var(--duration);
-  }
-}
-
-.tag {
-  display: flex;
-  align-items: center;
-  gap: 0 .2rem;
-  color: var(--text_color);
-  font-size: .8rem;
-  background-color: var(--deep_bg);
-  border-radius: var(--border_radius);
-  padding: .2rem .5rem;
-  margin-right: 1rem;
-
-}
-
-
-@keyframes loop {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-
 .dashboard {
   padding: 1rem 0 0 0; /* keeps the padding */
   width: 100%; /* ensures the container takes up full width of the parent */
@@ -574,6 +521,7 @@ main {
 .my_posts_links {
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .my_posts_links a:hover {
@@ -590,6 +538,21 @@ main {
   gap: .5rem;
   align-items: center;
 }
+
+
+input[type="submit"][value="Post"] {
+  background-color: var(--color_warning);
+  color: var(--deep_bg);
+  cursor: pointer;
+  padding: .3rem .5rem;
+  transition: var(--transition);
+  font-weight: 700;
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  -ms-transition: var(--transition);
+  -o-transition: var(--transition);
+}
+
 
 
 
@@ -637,8 +600,17 @@ main {
   -moz-border-radius: var(--border_radius);
   -ms-border-radius: var(--border_radius);
   -o-border-radius: var(--border_radius);
+  transition: var(--transition);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  -ms-transition: var(--transition);
+  -o-transition: var(--transition);
+}
 
 
+.post:hover {
+  box-shadow: var(--box_shadow);
+  cursor: pointer;
 }
 
 
@@ -646,6 +618,9 @@ main {
   display: flex;
   justify-content: space-between;
   justify-items: flex-start;
+  background-color: var(--bg_variant);
+  border-top-right-radius: var(--border_radius);
+  border-top-left-radius: var(--border_radius);
 }
 
 .user_details_post_time {
@@ -707,7 +682,7 @@ main {
   gap: .5rem; 
   scroll-snap-type: x mandatory;  
   width: fit-content; 
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
 }
 
 .post_images img {
@@ -777,6 +752,14 @@ main {
 
 #share_icon:hover {
   color: var(--danger_variant_btn);
+}
+
+#delete_icon {
+  color: var(--danger_btn);
+}
+
+#delete_icon:hover {
+  color: var(--text_color);
 }
 
 
@@ -914,7 +897,6 @@ input[type="submit"]:hover {
 .post_field {
   display: grid;
   gap: .5rem;
-  margin: 1rem 0;
 }
 
 .post_field:hover {
@@ -986,7 +968,7 @@ input[type="submit"]:hover {
 .floating_input {
   position: fixed;
   bottom: 5rem; /* 2rem above the bottom of the viewport */
-  right: 20rem;
+  right: 25rem;
   margin-bottom: 0; /* margin-bottom is unnecessary when using fixed positioning */
   display: flex;
   justify-content: flex-end;
@@ -996,7 +978,7 @@ input[type="submit"]:hover {
 
 .floating_input .post_field {
   margin-bottom: -1rem;
-  width: 30rem;
+  width: 40rem;
   margin-right: 2rem;
 }
 
@@ -1007,6 +989,7 @@ input[type="submit"]:hover {
 
 .floating_post_input textarea {
   background-color: var(--deep_bg);
+  height: 30rem;
 }
 
 .floating_post_input textarea:hover {
@@ -1079,6 +1062,104 @@ input[type="submit"]:hover {
   font-size: 2.7rem;
 }
 
+
+
+.standard_login  {
+  display: grid;
+  gap: .5rem;
+  margin: 1rem;
+}
+
+.standard_login textarea {
+  height: 6rem;
+  border-radius: var(--border_radius);
+  border: none;
+  background-color: var(--light_bg);
+  padding: .5rem;
+  width: 25rem;
+  resize: none;
+}
+
+.standard_login input, select {
+  height: 2rem;
+  border-radius: var(--border_radius);
+  border: none;
+  background-color: var(--light_bg);
+  padding: .5rem;
+  width: 25rem;
+}
+
+
+.standard_login input:focus, select:focus {
+  border: 1px solid var(--text_color);
+  transform: translateX(.5rem);
+  -webkit-transform: translateX(.5rem);
+  -moz-transform: translateX(.5rem);
+  -ms-transform: translateX(.5rem);
+  -o-transform: translateX(.5rem);
+}
+
+.standard_login input:hover, select:hover {
+  background-color: var(--default_bg);
+  transition: var(--transition);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  -ms-transition: var(--transition);
+  -o-transition: var(--transition);
+}
+
+
+input[type="submit"][value="Login"] {
+background-color: var(--color_warning);
+color: var(--deep_bg);
+cursor: pointer;
+transition: var(--transition);
+width: 3rem;
+margin-top: .5rem;
+font-weight: 700;
+}
+
+input[type="submit"][value="Update"] {
+background-color: var(--color_warning);
+color: var(--deep_bg);
+cursor: pointer;
+transition: var(--transition);
+width: 5rem;
+margin-top: .5rem;
+font-weight: 700;
+}
+
+
+input[type="submit"][value="Update"]:hover {
+  background-color: var(--text_color);
+  }
+
+
+input[type="submit"][value="Login"]:hover {
+background-color: var(--text_color);
+}
+
+input[type="submit"][value="Register"] {
+  background-color: var(--color_warning);
+  color: var(--deep_bg);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 4rem;
+  margin-top: .5rem;
+  font-weight: 700;
+  }
+
+  input[type="submit"][value="Register"]:hover {
+    background-color: var(--text_color);
+    }
+
+
+/*
+.confirm_human {
+display: none;
+}
+
+*/
 
 .log_session {
   margin: 1rem;
@@ -1180,6 +1261,35 @@ input[type="submit"]:hover {
 }
 
 
+
+label i {
+  font-size: 2rem;
+  transition: var(--transition);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  -ms-transition: var(--transition);
+  -o-transition: var(--transition);
+}
+
+label i:hover {
+  color: var(--color_warning);
+  cursor: pointer;
+}
+
+
+main .my_posts_contents {
+  margin-top: 2rem;
+  transition: var(--transition);
+  -webkit-transition: var(--transition);
+  -moz-transition: var(--transition);
+  -ms-transition: var(--transition);
+  -o-transition: var(--transition);
+}
+
+
+main .my_posts_contents:hover {
+  box-shadow: var(--box_shadow);
+}
 
 
 /* Footer */
@@ -1326,9 +1436,8 @@ p {
 
 /* Nav Styles */
 nav {
-    padding: 0.2rem .5rem;
+    padding: 0.2rem .2rem;
     height: 3rem;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -1360,7 +1469,7 @@ nav {
 
 /* Main Section Styles */
 main {
-  margin: 4.5rem .5rem;
+  margin: 4.5rem .2rem;
   padding: 0.2rem 0;
 }
 
@@ -1381,8 +1490,10 @@ main {
 
 .my_posts_links {
   gap: 1.5rem;
-  margin: .5rem 0 0 0;
+  margin-bottom: .7rem;
+  margin-top: 1rem;
 }
+
 
 
 
@@ -1405,6 +1516,13 @@ main {
 }
 
 
+.post_images {
+  display: flex;
+  gap: .5rem; 
+  scroll-snap-type: x mandatory;  
+  width: fit-content; 
+  scroll-behavior: smooth;
+}
 
 .post_images img {
   max-height: 25rem;
@@ -1486,7 +1604,7 @@ input[type="submit"] {
 }
 
 .followings {
-  max-height: 50rem;
+  max-height: 90rem;
 }
 
 .followings .user_details a {
@@ -1514,6 +1632,11 @@ input[type="submit"] {
   margin-right: 2rem;
 }
 
+
+
+.floating_post_input textarea {
+  height: 25rem;
+}
 
 
 .floating_post_input textarea:hover {
@@ -1669,7 +1792,7 @@ p {
 
 /* Nav Styles */
 nav {
-  padding: 0.2rem .5rem;
+  padding: 0.2rem .2rem;
   height: 3rem;
 
   position: fixed;
@@ -1698,7 +1821,7 @@ nav {
 
 /* Main Section Styles */
 main {
-  margin: 3.5rem .5rem;
+  margin: 3.5rem .2rem;
 }
 
 
@@ -1733,6 +1856,7 @@ main {
 .my_posts_links {
   gap: 1rem;
   margin-bottom: .7rem;
+  margin-top: 1rem;
 }
 
 
@@ -1754,10 +1878,21 @@ main {
 }
 
 
+
+.post_images {
+  display: flex;
+  gap: .5rem; 
+  scroll-snap-type: x mandatory;  
+  width: fit-content; 
+  scroll-behavior: smooth;
+}
+
 .post_images img {
   max-height: 20rem;
-  max-width: 100%;
+  max-width: 20rem;
 }
+
+
 
 
 .comment_input {
@@ -1848,7 +1983,9 @@ input[type="submit"] {
   margin: auto 1rem;
 }
 
-
+.floating_post_input textarea {
+  height: 15rem;
+}
 
 .floating_post_input {
   border-bottom: none;
@@ -1896,33 +2033,3 @@ input[type="submit"] {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
